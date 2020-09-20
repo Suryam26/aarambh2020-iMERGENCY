@@ -17,6 +17,7 @@
 
   </head>
   <body>
+    <button type="button" class="btn btn-danger" onclick="emergency();">Danger</button>
 
 
     <!-- JavaScript -->
@@ -24,5 +25,23 @@
     <script src="{% static 'js/popper.min.js' %}" charset="utf-8"></script>
     <script src="{% static 'js/bootstrap.min.js' %}" charset="utf-8"></script>
     <script src="{% static 'js/script.js' %}" charset="utf-8"></script>
+    <script type="text/javascript">
+    function emergency() {
+
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            var link = '{{url}}' + 'sms/' + pos.lat + '/' + pos.lng;
+            window.open(link);
+        });
+      }
+      else {
+        console.error("Geolocation is not supported by this browser.");
+      }
+    }
+    </script>
   </body>
 </html>

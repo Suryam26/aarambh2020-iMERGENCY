@@ -20,6 +20,6 @@ from imergency import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name='index.html'), name='home'),
-    path('sms/', views.sms, name='sms'),
+    path('', views.home, name='home'),
+    path('sms/<lat>/<lng>/', views.sms, name='sms'),
 ]
