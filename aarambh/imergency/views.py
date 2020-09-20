@@ -7,7 +7,7 @@ from django.conf import settings
 url=settings.CURRENT_URL
 
 def home(request):
-    return render(request,'index.html',{'url':url, 'emergency': False, 'reached': False})
+    return render(request,'index.html',{'url':url, 'emergency': 0, 'reached': 0})
 
 
 def sms(request):
@@ -16,9 +16,14 @@ def sms(request):
     client = Client(account_sid, auth_token)
     lat = request.GET['lat']
     lng = request.GET['lng']
+    type = request.GET['type']
     message = client.messages.create(
                          body="http://maps.google.com/maps?q="+lat+","+lng,
                          from_='+12184232326',
                          to='+917389944161'
                      )
-    return render(request,'index.html',{'url':url, 'emergency': True, 'reached': False})
+    if type == '1':
+        return render(request,'index.html',{'url':url, 'emergency': 1, 'reached': 0})
+
+    if type == '2':
+        return render(request,'index.html',{'url':url, 'emergency': 0, 'reached': 1})

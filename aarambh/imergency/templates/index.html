@@ -19,6 +19,8 @@
   <body>
 
       <div class="d-none" id="url">{{url}}</div>
+      <div class="d-none" id="emergency">{{emergency}}</div>
+      <div class="d-none" id="reached">{{reached}}</div>
       <header>
           <div class="navbar">
             <div class="navbar-brand">
@@ -31,16 +33,16 @@
 
       <div class="col-md-12  text-center">
           {% if reached != True %}
-            <button type="button" class="btn btn-danger bg-lg" onclick="emergency();">Emergency</button>
+            <button type="button" class="btn btn-danger bg-lg" onclick="sendSMS(1);">Emergency</button>
             {% if emergency %}
-            <button type="button" class="btn btn-danger bg-lg">Stop</button>
+            <button type="button" class="btn btn-danger bg-lg" onclick="Stop();">Stop</button>
             {% endif %}
           {% endif %}
 
           {% if emergency != True %}
-            <button type="button" class="btn btn-warning bg-lg">On way</button>
+            <button type="button" class="btn btn-warning bg-lg" onclick="sendSMS(2);">On way</button>
             {% if reached %}
-            <button type="button" class="btn btn-success bg-lg">Reached</button>
+            <button type="button" class="btn btn-success bg-lg" onclick="Stop();">Reached</button>
             {% endif %}
           {% endif %}
       </div>
