@@ -46,7 +46,7 @@ function emergency() {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-        var link = url + 'sms/' + pos.lat + '/' + pos.lng;
+        var link = url + 'sms/?lat=' + pos.lat + '&lng=' + pos.lng;
         window.open( link, '_self' );
     });
   }

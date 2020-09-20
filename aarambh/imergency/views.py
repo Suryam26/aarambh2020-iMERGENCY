@@ -10,11 +10,12 @@ def home(request):
     return render(request,'index.html',{'url':url, 'emergency': False, 'reached': False})
 
 
-def sms(request, lat, lng):
+def sms(request):
     account_sid = 'ACba8dd66ac66856bde921aa4268cd2a84'
     auth_token = 'cbdfc15fd8141b6c237963a3dbc9a935'
     client = Client(account_sid, auth_token)
-
+    lat = request.GET['lat']
+    lng = request.GET['lng']
     message = client.messages.create(
                          body="http://maps.google.com/maps?q="+lat+","+lng,
                          from_='+12184232326',

@@ -21,5 +21,5 @@ from imergency import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('sms/<lat>/<lng>/', views.sms, name='sms'),
+    path('sms/', views.sms, name='sms'),
 ]
