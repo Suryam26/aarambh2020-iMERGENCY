@@ -7,7 +7,7 @@ from django.conf import settings
 url=settings.CURRENT_URL
 
 def home(request):
-    return render(request,'index.html',{'url':url})
+    return render(request,'index.html',{'url':url, 'emergency': False, 'reached': False})
 
 
 def sms(request, lat, lng):
@@ -20,4 +20,4 @@ def sms(request, lat, lng):
                          from_='+12184232326',
                          to='+917389944161'
                      )
-    return HttpResponse("messages sent!", 200)
+    return render(request,'index.html',{'url':url, 'emergency': True, 'reached': False})

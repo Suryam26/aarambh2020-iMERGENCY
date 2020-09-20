@@ -17,8 +17,8 @@
 
   </head>
   <body>
-      <button type="button" class="btn btn-danger" onclick="emergency();">Danger</button>
 
+      <div class="d-none" id="url">{{url}}</div>
       <header>
           <div class="navbar">
             <div class="navbar-brand">
@@ -30,11 +30,19 @@
       <hr>
 
       <div class="col-md-12  text-center">
-          <button type="button" class="btn btn-danger bg-lg">Emergency</button>
-          <button type="button" class="btn btn-danger bg-lg">Stop</button>
+          {% if reached != True %}
+            <button type="button" class="btn btn-danger bg-lg" onclick="emergency();">Emergency</button>
+            {% if emergency %}
+            <button type="button" class="btn btn-danger bg-lg">Stop</button>
+            {% endif %}
+          {% endif %}
 
-          <button type="button" class="btn btn-warning bg-lg">On way</button>
-          <button type="button" class="btn btn-success bg-lg">Reached</button>
+          {% if emergency != True %}
+            <button type="button" class="btn btn-warning bg-lg">On way</button>
+            {% if reached %}
+            <button type="button" class="btn btn-success bg-lg">Reached</button>
+            {% endif %}
+          {% endif %}
       </div>
 
       <div class="container ">
@@ -74,29 +82,10 @@
       </div>
 
 
-
     <!-- JavaScript -->
     <script src="{% static 'js/jquery-3.5.1.min.js' %}" charset="utf-8"></script>
     <script src="{% static 'js/popper.min.js' %}" charset="utf-8"></script>
     <script src="{% static 'js/bootstrap.min.js' %}" charset="utf-8"></script>
     <script src="{% static 'js/script.js' %}" charset="utf-8"></script>
-    <script type="text/javascript">
-    function emergency() {
-
-      if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-            var link = '{{url}}' + 'sms/' + pos.lat + '/' + pos.lng;
-            window.open(link);
-        });
-      }
-      else {
-        console.error("Geolocation is not supported by this browser.");
-      }
-    }
-    </script>
   </body>
 </html>
