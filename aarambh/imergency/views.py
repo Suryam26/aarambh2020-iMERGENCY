@@ -13,7 +13,7 @@ def home(request):
 
 def sms(request):
     account_sid = 'ACba8dd66ac66856bde921aa4268cd2a84'
-    auth_token = 'cbdfc15fd8141b6c237963a3dbc9a935'
+    auth_token = '392d6ee158aa8a7e54f84895470eeee2'
     client = Client(account_sid, auth_token)
 
     lat = request.GET['lat']

@@ -120,3 +120,35 @@ function sendSMS(type) {
     console.error("Geolocation is not supported by this browser.");
   }
 }
+
+
+// Voice Recognition code
+var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
+var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
+var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
+
+var grammar = '#JSGF V1.0; grammar colors; public <color> = help ;'
+
+var recognition = new SpeechRecognition();
+var speechRecognitionList = new SpeechGrammarList();
+speechRecognitionList.addFromString(grammar, 1);
+recognition.grammars = speechRecognitionList;
+recognition.continuous = false;
+recognition.lang = 'en-US';
+recognition.interimResults = false;
+recognition.maxAlternatives = 1;
+
+
+function voice() {
+  recognition.start();
+
+  recognition.onresult = function(event) {
+    var word = event.results[0][0].transcript;
+    if (word == "help") {
+      sendSMS(1);
+    }
+  }
+}
+
+voice();
+setInterval(voice, 10000);
