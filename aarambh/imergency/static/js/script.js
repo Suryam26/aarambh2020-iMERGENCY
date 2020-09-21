@@ -38,12 +38,17 @@ if (localStorage.getItem("i_phn3")) {
 }
 
 
+// This will update and send location every 10sec.
+// The time interveal can be increased or decreased.
 if (emergency == 1) {
   setTimeout(function() {
       sendSMS(1);
   }, 5000);
 }
 
+
+// This will update and send location every 10sec.
+// The time interveal can be increased or decreased.
 if (reached == 1) {
   setTimeout(function() {
       sendSMS(2);
@@ -51,13 +56,7 @@ if (reached == 1) {
 }
 
 
-
-function Stop() {
-  window.open( url, '_self' );
-}
-
-
-
+// Local Storage
 function save() {
   if (typeof(Storage) !== "undefined") {
     name = $("#name").val();
@@ -83,7 +82,7 @@ function save() {
 }
 
 
-
+// Location tracking and Message sending
 function sendSMS(type) {
   if (navigator.geolocation) {
         var i_Name = localStorage.getItem("i_Name");
@@ -121,8 +120,13 @@ function sendSMS(type) {
   }
 }
 
+// Stop location tracking
+function Stop() {
+  window.open( url, '_self' );
+}
 
-// Voice Recognition code
+
+// Voice Recognition
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
@@ -150,5 +154,7 @@ function voice() {
   }
 }
 
-voice();
-setInterval(voice, 10000);
+if (emergency == 0 && reached == 0) {
+  voice();
+  setInterval(voice, 10000);
+}

@@ -27,7 +27,7 @@
       <header>
           <div class="navbar navbar-dark">
             <div class="navbar-brand ml-auto mr-auto">
-              <h1 class="my-2">iMERGENCY</h1>
+              <h1 class="my-2"><span class="fa fa-info"></span>MERGENCY</h1>
             </div>
           </div>
       </header>
@@ -35,23 +35,23 @@
       <!-- Buttons -->
       <div class="container text-center" id="button">
           {% if reached != True %}
-            <button type="button" class="btn btn-danger bg-lg p-4 m-2" onclick="sendSMS(1);">Emergency</button>
+            <button type="button" class="btn btn-danger bg-lg p-4 m-2" onclick="sendSMS(1);"><span class="fa fa-exclamation-triangle"></span> Emergency</button>
             {% if emergency %}
-            <button type="button" class="btn btn-danger bg-lg p-4 m-2 px-5" onclick="Stop();">Stop</button>
+            <button type="button" class="btn btn-danger bg-lg p-4 m-2 px-5" onclick="Stop();"><span class="fa fa-stop-circle"></span> Stop</button>
             {% endif %}
           {% endif %}
 
           {% if emergency != True %}
-            <button type="button" class="btn btn-warning bg-lg p-4 m-2" onclick="sendSMS(2);">On My Way</button>
+            <button type="button" class="btn btn-warning bg-lg p-4 m-2" onclick="sendSMS(2);"><span class="fa fa-car"></span> On My Way</button>
             {% if reached %}
-            <button type="button" class="btn btn-success bg-lg p-4 m-2" onclick="Stop();">Reached</button>
+            <button type="button" class="btn btn-success bg-lg p-4 m-2" onclick="Stop();"><span class="fa fa-home"></span> Reached</button>
             {% endif %}
           {% endif %}
       </div>
 
       <!-- Details -->
       <div class="container">
-          <center><h2>Details</h2></center>
+          <center><h2><span class="fa fa-address-book"></span> Details</h2></center>
           <hr>
           <form class="row my-4">
               <div class="col offset-md-2 offset-lg-3">
