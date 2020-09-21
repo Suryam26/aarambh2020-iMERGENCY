@@ -87,7 +87,7 @@ function sendSMS(type) {
                   lat: position.coords.latitude,
                   lng: position.coords.longitude
               };
-              var link = url + 'sms/?lat=' + pos.lat + '&lng=' + pos.lng + '&type=' + type;
+              var link = url + 'sms/?lat=' + pos.lat + '&lng=' + pos.lng + '&type=' + type + '&name=' + i_Name + "&phn1=" + i_phn1 + "&phn2=" + i_phn2 + "&phn3=" + i_phn3;
               window.open( link, '_self' );
           });
         }
