@@ -17,13 +17,22 @@ def sms(request):
     lat = request.GET['lat']
     lng = request.GET['lng']
     type = request.GET['type']
-    message = client.messages.create(
-                         body="http://maps.google.com/maps?q="+lat+","+lng,
-                         from_='+12184232326',
-                         to='+917389944161'
-                     )
+
+    # For "Emergency"
     if type == '1':
+        message = client.messages.create(
+                             body="\n\nEMERGENCY!!! \nThis is \nI need HELP! \nThis is my current location: \nhttp://maps.google.com/maps?q="+lat+","+lng,
+                             from_='+12184232326',
+                             to='+917389944161'
+                         )
         return render(request,'index.html',{'url':url, 'emergency': 1, 'reached': 0})
 
+
+    # For "On my way"
     if type == '2':
+        message = client.messages.create(
+                             body="\n\nThis is \nI am on my way. \nThis is my current location: \nhttp://maps.google.com/maps?q="+lat+","+lng,
+                             from_='+12184232326',
+                             to='+917389944161'
+                         )
         return render(request,'index.html',{'url':url, 'emergency': 0, 'reached': 1})
