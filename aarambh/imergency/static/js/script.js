@@ -7,6 +7,10 @@ var name = '';
 var phn1 = '';
 var phn2 = '';
 var phn3 = '';
+var country1 = '';
+var country2 = '';
+var country3 = '';
+
 
 if (localStorage.getItem("i_Name")) {
   $("#name").attr("value", localStorage.getItem("i_Name"));
@@ -14,14 +18,23 @@ if (localStorage.getItem("i_Name")) {
 
 if (localStorage.getItem("i_phn1")) {
   $("#phone1").attr("value", localStorage.getItem("i_phn1"));
+  if (localStorage.getItem("i_country1")) {
+    $("#country1").attr("value", localStorage.getItem("i_country1"));
+  }
 }
 
 if (localStorage.getItem("i_phn2")) {
   $("#phone2").attr("value", localStorage.getItem("i_phn2"));
+  if (localStorage.getItem("i_country2")) {
+    $("#country2").attr("value", localStorage.getItem("i_country2"));
+  }
 }
 
 if (localStorage.getItem("i_phn3")) {
   $("#phone3").attr("value", localStorage.getItem("i_phn3"));
+  if (localStorage.getItem("i_country3")) {
+    $("#country3").attr("value", localStorage.getItem("i_country3"));
+  }
 }
 
 
@@ -51,10 +64,17 @@ function save() {
     phn1 = $("#phone1").val();
     phn2 = $("#phone2").val();
     phn3 = $("#phone3").val();
+    country1 = $("#country1").val();
+    country2 = $("#country2").val();
+    country3 = $("#country3").val();
+
     localStorage.setItem("i_Name", name);
     localStorage.setItem("i_phn1", phn1);
     localStorage.setItem("i_phn2", phn2);
     localStorage.setItem("i_phn3", phn3);
+    localStorage.setItem("i_country1", country1);
+    localStorage.setItem("i_country2", country2);
+    localStorage.setItem("i_country3", country3);
     window.open( url, '_self' );
   }
   else {
@@ -70,6 +90,9 @@ function sendSMS(type) {
         var i_phn1 = localStorage.getItem("i_phn1");
         var i_phn2 = localStorage.getItem("i_phn2");
         var i_phn3 = localStorage.getItem("i_phn3");
+        var i_country1 = localStorage.getItem("i_country1");
+        var i_country2 = localStorage.getItem("i_country2");
+        var i_country3 = localStorage.getItem("i_country3");
 
         if (!i_Name) {
           var att = $("#name").attr("class");
@@ -87,7 +110,8 @@ function sendSMS(type) {
                   lat: position.coords.latitude,
                   lng: position.coords.longitude
               };
-              var link = url + 'sms/?lat=' + pos.lat + '&lng=' + pos.lng + '&type=' + type + '&name=' + i_Name + "&phn1=" + i_phn1 + "&phn2=" + i_phn2 + "&phn3=" + i_phn3;
+              var link = url + 'sms/?lat=' + pos.lat + '&lng=' + pos.lng + '&type=' + type + '&name=' + i_Name
+                          + "&phn1=" + i_country1 + i_phn1 + "&phn2=" + i_country2 + i_phn2 + "&phn3=" + i_country3 + i_phn3;
               window.open( link, '_self' );
           });
         }

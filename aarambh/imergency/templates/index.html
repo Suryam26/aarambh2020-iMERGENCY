@@ -18,6 +18,7 @@
   </head>
   <body class="bg-dark">
 
+      <!-- Hidden -->
       <div class="d-none" id="url">{{url}}</div>
       <div class="d-none" id="emergency">{{emergency}}</div>
       <div class="d-none" id="reached">{{reached}}</div>
@@ -36,7 +37,7 @@
           {% if reached != True %}
             <button type="button" class="btn btn-danger bg-lg p-4 m-2" onclick="sendSMS(1);">Emergency</button>
             {% if emergency %}
-            <button type="button" class="btn btn-danger bg-lg p-4 m-2" onclick="Stop();">Stop</button>
+            <button type="button" class="btn btn-danger bg-lg p-4 m-2 px-5" onclick="Stop();">Stop</button>
             {% endif %}
           {% endif %}
 
@@ -64,7 +65,7 @@
                  <div class="form-group row">
                      <label for="phoneno1" class="col-form-label ml-3">Phone No.1:</label>
                      <div class="row mx-2 col-md-8 col-lg-6">
-                       <input type="text" class="form-control col-2 col-md-3" value="+91" size="2">
+                       <input type="text" class="form-control col-2 col-md-3" id="country1" value="+91" size="2">
                        <input required type="text" class="form-control ml-2 col" id="phone1" placeholder="Enter Phone No.1">
                      </div>
                      <div id="phoneHelp" class="form-text text-danger ml-4 ml-lg-0">Enter atleast one phone number.</div>
@@ -72,14 +73,14 @@
                  <div class="form-group row">
                       <label for="phoneno2" class="col-form-label ml-3">Phone No.2:</label>
                       <div class="row mx-2 col-md-8 col-lg-6">
-                        <input type="text" class="form-control col-2 col-md-3" value="+91" size="2">
+                        <input type="text" class="form-control col-2 col-md-3" id="country2" value="+91" size="2">
                         <input required type="text" class="form-control ml-2 col" id="phone2" placeholder="Enter Phone No.2">
                       </div>
                  </div>
                  <div class="form-group row">
                       <label for="phoneno3" class="col-form-label ml-3">Phone No.3:</label>
                       <div class="row mx-2 col-md-8 col-lg-6">
-                        <input type="text" class="form-control col-2 col-md-3" value="+91" size="2">
+                        <input type="text" class="form-control col-2 col-md-3" id="country3" value="+91" size="2">
                         <input required type="text" class="form-control ml-2 col" id="phone3" placeholder="Enter Phone No.3">
                       </div>
                  </div>

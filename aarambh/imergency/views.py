@@ -6,6 +6,7 @@ from django.conf import settings
 
 url=settings.CURRENT_URL
 
+
 def home(request):
     return render(request,'index.html',{'url':url, 'emergency': 0, 'reached': 0})
 
@@ -24,9 +25,9 @@ def sms(request):
     type = request.GET['type']
     phoneNo = []
 
-    if phn1: phoneNo.append(phn1)
-    if phn2: phoneNo.append(phn2)
-    if phn3: phoneNo.append(phn3)
+    if phn1 and len(phn1)>10: phoneNo.append(phn1.replace(" ", "+"))
+    if phn2 and len(phn2)>10: phoneNo.append(phn2.replace(" ", "+"))
+    if phn3 and len(phn3)>10: phoneNo.append(phn3.replace(" ", "+"))
 
     # For "Emergency"
     if type == '1':
