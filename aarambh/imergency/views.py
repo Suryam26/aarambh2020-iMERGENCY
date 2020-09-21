@@ -30,19 +30,33 @@ def sms(request):
 
     # For "Emergency"
     if type == '1':
+        msgBody = "\n\nEMERGENCY!!! \nThis is " + name + ". \nI need HELP! \nThis is my current location: \nhttp://maps.google.com/maps?q="+lat+","+lng
         message = client.messages.create(
-                             body="\n\nEMERGENCY!!! \nThis is " + name + ". \nI need HELP! \nThis is my current location: \nhttp://maps.google.com/maps?q="+lat+","+lng,
+                             body= msgBody,
                              from_='+12184232326',
                              to='+917389944161'
                          )
+
+        message = client.messages.create(
+                              body= msgBody,
+                              from_='whatsapp:+14155238886',
+                              to='whatsapp:+917389944161'
+                          )
         return render(request,'index.html',{'url':url, 'emergency': 1, 'reached': 0})
 
 
     # For "On my way"
     if type == '2':
+        msgBody = "\n\nThis is " + name + ". \nI am on my way. \nThis is my current location: \nhttp://maps.google.com/maps?q="+lat+","+lng
         message = client.messages.create(
-                             body="\n\nThis is " + name + ". \nI am on my way. \nThis is my current location: \nhttp://maps.google.com/maps?q="+lat+","+lng,
+                             body= msgBody,
                              from_='+12184232326',
                              to='+917389944161'
                          )
+
+        message = client.messages.create(
+                              body= msgBody,
+                              from_='whatsapp:+14155238886',
+                              to='whatsapp:+917389944161'
+                          )
         return render(request,'index.html',{'url':url, 'emergency': 0, 'reached': 1})
