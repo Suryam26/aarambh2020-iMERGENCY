@@ -1,42 +1,18 @@
-/** HEADER **/
-.navbar-brand{
-    width: 100%;
-    height: 100%;
-}
-.navbar-brand h1 { /* Restaurant name */
-    text-align: center;
-   padding: 15px;
-   margin: 20px;
+body {
   color: white;
-  font-size: 2em;
-  font-weight: bold;
-  text-shadow: 1px 1px 1px #222;
-  line-height: .75;
-  height:auto;
+}
+
+header {
   background-color: black;
 }
 
-/* END HEADER */
-form{
-    margin: 20px;
-    padding: 20px;
+#button {
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
-body{
-    font-family: calibri,Helvetica,sans-serif;
-    background-color:white;
-}
-.container
-{
 
-    height: auto;
-    padding: 70px;
-    padding-top: 25px;
-    background-color: white;
-
-}
-button{
-    width: 120px;
-    height: 60px;
-    margin: 20px;
-    padding: 3px;
+@media (min-width:768px) and (max-width:991px) {
+  #phoneHelp, #nameHelp {
+    margin-left: 22% !important;
+  }
 }

@@ -16,70 +16,75 @@
     <title>iMERGENCY</title>
 
   </head>
-  <body>
+  <body class="bg-dark">
 
       <div class="d-none" id="url">{{url}}</div>
       <div class="d-none" id="emergency">{{emergency}}</div>
       <div class="d-none" id="reached">{{reached}}</div>
+
+      <!-- Header -->
       <header>
-          <div class="navbar">
-            <div class="navbar-brand">
-              <h1 >iMERGENCY</h1>
+          <div class="navbar navbar-dark">
+            <div class="navbar-brand ml-auto mr-auto">
+              <h1 class="my-2">iMERGENCY</h1>
             </div>
           </div>
       </header>
 
-      <hr>
-
-      <div class="col-md-12  text-center">
+      <!-- Buttons -->
+      <div class="container text-center" id="button">
           {% if reached != True %}
-            <button type="button" class="btn btn-danger bg-lg" onclick="sendSMS(1);">Emergency</button>
+            <button type="button" class="btn btn-danger bg-lg p-4 m-2" onclick="sendSMS(1);">Emergency</button>
             {% if emergency %}
-            <button type="button" class="btn btn-danger bg-lg" onclick="Stop();">Stop</button>
+            <button type="button" class="btn btn-danger bg-lg p-4 m-2" onclick="Stop();">Stop</button>
             {% endif %}
           {% endif %}
 
           {% if emergency != True %}
-            <button type="button" class="btn btn-warning bg-lg" onclick="sendSMS(2);">On way</button>
+            <button type="button" class="btn btn-warning bg-lg p-4 m-2" onclick="sendSMS(2);">On My Way</button>
             {% if reached %}
-            <button type="button" class="btn btn-success bg-lg" onclick="Stop();">Reached</button>
+            <button type="button" class="btn btn-success bg-lg p-4 m-2" onclick="Stop();">Reached</button>
             {% endif %}
           {% endif %}
       </div>
 
-      <div class="container ">
-          <center><h1>Details Here</h1></center>
+      <!-- Details -->
+      <div class="container">
+          <center><h2>Details</h2></center>
           <hr>
-          <form>
-              <div>
+          <form class="row my-4">
+              <div class="col offset-md-2 offset-lg-3">
                  <div class="form-group row">
-                     <label for="name" class=" col-md-3 col-sm-4 col-form-label">Name:</label>
-                     <div class="col-md-6 col-sm-10">
-                     <input required type="text" class="form-control" id="name" placeholder="Enter Name">
-                     <div id="nameHelp" class="form-text text-danger mt-0">Please enter your name.</div>
+                     <label for="name" class="col-form-label ml-3 mr-3">Name:</label>
+                     <div class="row mx-2 col-md-8 col-lg-6">
+                       <input required type="text" class="form-control ml-md-4 col" id="name" placeholder="Enter Name">
                      </div>
+                     <div id="nameHelp" class="form-text text-danger ml-4 ml-lg-0">Please enter your name.</div>
                  </div>
                  <div class="form-group row">
-                     <label for="phoneno1" class="col-md-3 col-sm-4 col-form-label">Phone No.1:</label>
-                     <div class=" col-md-6 col-sm-10">
-                        <input required type="text" class="form-control" id="phone1" placeholder="Enter Phone No.1">
-                        <div id="phoneHelp" class="form-text text-danger mt-0">Enter atleast one phone number.</div>
+                     <label for="phoneno1" class="col-form-label ml-3">Phone No.1:</label>
+                     <div class="row mx-2 col-md-8 col-lg-6">
+                       <input type="text" class="form-control col-2 col-md-3" value="+91" size="2">
+                       <input required type="text" class="form-control ml-2 col" id="phone1" placeholder="Enter Phone No.1">
                      </div>
+                     <div id="phoneHelp" class="form-text text-danger ml-4 ml-lg-0">Enter atleast one phone number.</div>
                  </div>
                  <div class="form-group row">
-                      <label for="phoneno2" class="col-md-3 col-sm-4 col-form-label">Phone No.2:</label>
-                      <div class=" col-md-6 col-sm-10">
-                          <input required type="text" class="form-control" id="phone2" placeholder="Enter Phone No.2">
+                      <label for="phoneno2" class="col-form-label ml-3">Phone No.2:</label>
+                      <div class="row mx-2 col-md-8 col-lg-6">
+                        <input type="text" class="form-control col-2 col-md-3" value="+91" size="2">
+                        <input required type="text" class="form-control ml-2 col" id="phone2" placeholder="Enter Phone No.2">
                       </div>
                  </div>
                  <div class="form-group row">
-                      <label for="phoneno3" class=" col-md-3 col-sm-4 col-form-label">Phone No.3:</label>
-                      <div class="col-md-6 col-sm-10">
-                          <input required type="text" class="form-control" id="phone3" placeholder="Enter Phone No.3">
+                      <label for="phoneno3" class="col-form-label ml-3">Phone No.3:</label>
+                      <div class="row mx-2 col-md-8 col-lg-6">
+                        <input type="text" class="form-control col-2 col-md-3" value="+91" size="2">
+                        <input required type="text" class="form-control ml-2 col" id="phone3" placeholder="Enter Phone No.3">
                       </div>
                  </div>
-                 <div class="col-lg-12 col-md-12 col-sm-12 text-center">
-                    <button type="button" class="btn btn-primary" onclick="save();">Save</button>
+                 <div class="form-group row my-4">
+                    <button type="button" class="btn btn-primary offset-4 offset-md-3 offset-lg-2 col-4 col-md-3 col-lg-2 p-2" onclick="save();">Save</button>
                  </div>
               </div>
           </form>
