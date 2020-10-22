@@ -16,8 +16,8 @@ def home(request):
 # Sending Messages
 def sms(request):
     # Messaging API (We are using a trial version of this API for development purposes)
-    account_sid = 'ACba8dd66ac66856bde921aa4268cd2a84'
-    auth_token = '392d6ee158aa8a7e54f84895470eeee2'     #This Token changes within 24hrs
+    account_sid = #Enter you're account_sid
+    auth_token = #Enter you're token
     client = Client(account_sid, auth_token)
 
 
@@ -43,14 +43,14 @@ def sms(request):
         msgBody = "\n\nEMERGENCY!!! \nThis is " + name + ". \nI need HELP! \nThis is my current location: \nhttp://maps.google.com/maps?q="+lat+","+lng
         message = client.messages.create(
                              body= msgBody,
-                             from_='+12184232326',
-                             to='+917389944161'        #In trial version we can only send messages to one fixed number.
+                             from_= #Enter assigned phone number from twillio,
+                             to= #Enter recever's phone number,
                          )
 
         message = client.messages.create(
                               body= msgBody,
-                              from_='whatsapp:+14155238886',
-                              to='whatsapp:+917389944161'       #In trial version we can only send messages to one fixed number.
+                              from_= #Enter assigned phone number from twillio,
+                              to= #Enter recever's phone number,
                           )
 
         # In the full version of this API we can send messages to more then one person at a time by passing in an array of numbers
@@ -70,13 +70,13 @@ def sms(request):
         msgBody = "\n\nThis is " + name + ". \nI am on my way. \nThis is my current location: \nhttp://maps.google.com/maps?q="+lat+","+lng
         message = client.messages.create(
                              body= msgBody,
-                             from_='+12184232326',
-                             to='+917389944161'     #In trial version we can only send messages to one fixed number.
+                             from_= #Enter assigned phone number from twillio,
+                             to= #Enter recever's phone number,
                          )
 
         message = client.messages.create(
                               body= msgBody,
-                              from_='whatsapp:+14155238886',
-                              to='whatsapp:+917389944161'       #In trial version we can only send messages to one fixed number.
+                              from_= #Enter assigned phone number from twillio,
+                              to = #Enter recever's phone number,
                           )
         return render(request,'index.html',{'url':url, 'emergency': 0, 'reached': 1})
